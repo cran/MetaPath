@@ -1,5 +1,4 @@
 export( 
-Affy2GeneID,
 cor.func,
 cox.perm.sample,
 coxfunc,
@@ -19,12 +18,14 @@ pqvalues.compute,
 reg.perm.sample,
 Tperm.sample
 )
+
 import(
 Biobase,
-AnnotationDbi,
-genefilter,
 GSEABase,
-limma,
-impute,
-qvalue
+genefilter,
+impute
 )
+
+importFrom("grDevices", "gray")
+importFrom("stats", "heatmap", "p.adjust", "pchisq")
+

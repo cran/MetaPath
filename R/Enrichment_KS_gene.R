@@ -25,13 +25,13 @@ if(!is.null(madata)){
 
 	
 	if(resp.type=="twoclass") {	
-		tstat=rowttests(exprs(madata), as.factor(label), tstatOnly= F)
+		tstat=genefilter::rowttests(exprs(madata), as.factor(label), tstatOnly= F)
 		p.values=(tstat$p.value)
 		names(p.values)=rownames(tstat)
 		gene.name.sort=names(sort(p.values, decreasing = F))
 	
 	} else if(resp.type=="multiclass") {	
-		tstat=rowFtests(exprs(madata), as.factor(label), var.equal = TRUE)
+		tstat=genefilter::rowFtests(exprs(madata), as.factor(label), var.equal = TRUE)
 		p.values=(tstat$p.value)
 		names(p.values)=rownames(tstat)
 		gene.name.sort=names(sort(p.values, decreasing = F))

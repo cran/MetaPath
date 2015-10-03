@@ -1,3 +1,4 @@
+##### internal functions from Dr. Tibshirani's software package GSA
 cox.perm.sample <-
 function(expr,testgroup,censoring,nperm) {
 

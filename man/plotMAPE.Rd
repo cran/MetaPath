@@ -25,7 +25,7 @@ The MAPE method of interest.
 }
 
 \value{
-A Venn diagram and a heatmap of q-values of enriched pathways will be plotted.
+A heatmap of q-values of enriched pathways will be plotted.
 When plot the heatmap, if the MAPE.method is MAPE_I, it will plot the q-values of enriched pathways for each individual study and q-values computed by three MAPE methods.
 if the MAPE.method is MAPE_P, it will plot the q-values of enriched pathways for each individual study and q-values computed by the MAPE_P method.
 if the MAPE.method is MAPE_G, it will plot the q-values of enriched pathways for each individual study and q-values computed by the MAPE_G method.

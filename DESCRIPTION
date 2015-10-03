@@ -1,16 +1,13 @@
 Package: MetaPath
 Type: Package
-Title: Perform the Meta-Analysis for Pathway Enrichment analysis
-        (MAPE).
-Version: 0.9
-Date: 2011-05-20
+Title: Perform the Meta-Analysis for Pathway Enrichment Analysis (MAPE)
+Version: 1.0
+Date: 2015-09-28
 Author: Kui Shen and Geroge Tseng
 Maintainer: Kui Shen <kuishen@alumni.pitt.edu>
-Depends: R(>=
-        2.13.0),Biobase,AnnotationDbi,genefilter,GSEABase,limma,impute,qvalue
-Description: This R package was implemented to perform the
-        Meta-analysis for Pathway Enrichment (MAPE) methods introduced
-        by Shen and Tseng (2010). It includes functions to
+Depends: R (>= 3.0.0),Biobase,GSEABase,genefilter,impute
+Description: Perform the Meta-analysis for Pathway Enrichment (MAPE) 
+		methods introduced by Shen and Tseng (2010). It includes functions to
         automatically perform MAPE_G (integrating multiple studies at
         gene level), MAPE_P (integrating multiple studies at pathway
         level) and MAPE_I (a hybrid method integrating MAEP_G and
@@ -28,6 +25,7 @@ Description: This R package was implemented to perform the
         http://www.ncbi.nlm.nih.gov/pubmed/20410053.
 License: GPL (>= 2.0)
 LazyLoad: yes
-Packaged: 2012-05-22 19:18:14 UTC; kshen
+NeedsCompilation: no
+Packaged: 2015-10-02 19:12:17 UTC; root
 Repository: CRAN
-Date/Publication: 2012-05-23 07:37:18
+Date/Publication: 2015-10-03 07:57:54

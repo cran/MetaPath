@@ -20,23 +20,14 @@ MAPE.bin=MAPE.mtx[,(ncol(MAPE.mtx)-2):ncol(MAPE.mtx)]
 MAPE.bin=ifelse(MAPE.bin>cutoff,0,1)
 
 if(is.null(nrow(MAPE.bin))) {
-	cat('No enriched pathways were identified using current cutoff') 
+	cat('No enriched pathways were identified using the current cutoff') 
 	} else {
-	gene.venn<- vennCounts(MAPE.bin)
-	dev.new() 
-	vennDiagram(gene.venn,mar=c(1.2,1.2,1.2,1.2),cex=1.2,lwd=2)
-	title(main='Venn diagram of enriched pathways')
-
-	dev.new() 
 	cut4plot=1e-5
 	MAPE.mtx[MAPE.mtx<=cut4plot]=cut4plot
-	MAPE.mtx=log10(MAPE.mtx)
-	
+	MAPE.mtx=log10(MAPE.mtx)	
 	sort.idx=order(MAPE.mtx[,ncol(MAPE.mtx)])
 	MAPE.mtx=MAPE.mtx[sort.idx,]
-
-	heatmap(MAPE.mtx, col = gray(0:128/128),Colv=NA,Rowv=NA,scale='none',cexCol=1,cexRow=1,main='Heatmap of enriched pathways')
-		
+	heatmap(MAPE.mtx, col = gray(0:128/128),Colv=NA,Rowv=NA,scale='none',cexCol=1,cexRow=1,main='Heatmap of enriched pathways')		
 } 
 
 }

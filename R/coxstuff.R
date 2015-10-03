@@ -1,3 +1,4 @@
+##### internal functions from Dr. Tibshirani's software package GSA
 coxstuff <-
 function(x, y, ic, offset = rep(0., length(y)))
 {

@@ -1,3 +1,5 @@
+##### internal functions from Dr. Tibshirani's software package GSA
+
 cor.func <-
 function (x, y ) {
     n <- length(y)

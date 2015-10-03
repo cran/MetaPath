@@ -1,3 +1,4 @@
+##### internal functions from Dr. Tibshirani's software package GSA
 coxvar <-
 function(x, y, ic, offset = rep(0., length(y)), coxstuff.obj = NULL) {
         # computes information elements (var) for cox
@@ -21,12 +22,11 @@ function(x, y, ic, offset = rep(0., length(y)), coxstuff.obj = NULL) {
         nn <- coxstuff.obj$nn
         nno <- coxstuff.obj$nno
 
-x2<- x^2
-oo <- (1.:n)[y >= fail.times[1] ]
-sx<-(1/nno[1])*rowSums(x[, oo] * exp(offset[oo]))
-s<-(1/nno[1])*rowSums(x2[, oo] * exp(offset[oo]))
-w <-  d[1] * (s - sx * sx)
-
+	x2<- x^2
+	oo <- (1.:n)[y >= fail.times[1] ]
+	sx<-(1/nno[1])*rowSums(x[, oo] * exp(offset[oo]))
+	s<-(1/nno[1])*rowSums(x2[, oo] * exp(offset[oo]))
+	w <-  d[1] * (s - sx * sx)
 
        for(i in 2.:nf) {
            oo <- (1.:n)[y >= fail.times[i-1] & y < fail.times[i] ]

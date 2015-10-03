@@ -4,8 +4,8 @@ function(arraydata,pathway.DB,resp.type=c('twoclass','multiclass','continuous', 
 
 
 ## load required packages
-packages.meta=c('Biobase','genefilter','GSEABase','limma')
-for(package in packages.meta) do.call(require, list(package))
+##packages.meta=c('Biobase','genefilter','GSEABase','limma')
+##for(package in packages.meta) do.call(require, list(package))
 
 
 ## 1. check the input auguments (eset or list)
@@ -67,13 +67,14 @@ if (is(arraydata[[1]],'list')) {
 		rownames(exprs)=arraydata[[t1]]$geneid
 		colnames(exprs)=arraydata[[t1]]$samplename
 
-			if(is.null(arraydata[[t1]]$z)){
-				pheno=as.data.frame(arraydata[[t1]]$y)
+			if(resp.type!='survival'){
+				pheno=as.data.frame(matrix(arraydata[[t1]]$y,length(arraydata[[t1]]$y),1))
 				rownames(pheno)=arraydata[[t1]]$samplename
 				colnames(pheno)='label'
 			} else {
-				pheno=cbind(arraydata[[t1]]$y,arraydata[[t1]]$z)
-				pheno=as.data.frame(pheno)
+			    yy=as.data.frame(matrix(arraydata[[t1]]$y,length(arraydata[[t1]]$y),1))
+			    zz=as.data.frame(matrix(arraydata[[t1]]$z,length(arraydata[[t1]]$z),1))
+				pheno=as.data.frame(cbind(yy,zz))
 				rownames(pheno)=arraydata[[t1]]$samplename
 				colnames(pheno)=c('label','censoring.status')
 			}
@@ -96,8 +97,8 @@ if (is(arraydata[[1]],'list')) {
 # impute missing data
 for(study.no in 1:length(study)){
 	if(sum(is.na(exprs(study[[study.no]])))>0){
-	require(impute)
-	exprs(study[[study.no]])=impute.knn(exprs(study[[study.no]]),k=knn.neighbors)$data
+##	require(impute)
+	exprs(study[[study.no]])=impute::impute.knn(exprs(study[[study.no]]),k=knn.neighbors)$data
     }
 }	
 
@@ -199,9 +200,8 @@ if(length(study)==1) {
 	pvalue.all=as.data.frame(pvalue.all)
 
 if(qvalue.cal=='estimate'){
-	require('qvalue')
 	for(t1 in 1:ncol(pvalue.all)){
-		qvalue.all[,t1]=qvalue(pvalue.all[,t1])$qvalues
+		qvalue.all[,t1]=p.adjust(pvalue.all[,t1],"BH") 
 	}
 	
 }
